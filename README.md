@@ -90,7 +90,9 @@ The easiest way to get started is GitHub Codespaces, since it will setup all the
     i. First with Azure Developer CLI 
 
     ```shell
-    azd auth login
+    -- azd auth login
+    -- fixed:
+    azd auth login --use-device-code 
     ```
 
     ii. Then sign in with Azure CLI 
