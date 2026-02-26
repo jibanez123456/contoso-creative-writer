@@ -1,6 +1,11 @@
 # Use a specific version of Python image to ensure consistency across builds
 FROM mcr.microsoft.com/devcontainers/python:3.13-bullseye
 
+# jibanez
+# --- Fix: remove stale Yarn apt repo (causes NO_PUBKEY/invalid signatures) ---
+RUN rm -f /etc/apt/sources.list.d/yarn.list \
+    && rm -f /usr/share/keyrings/yarn-archive-keyring.gpg || true
+
 # Combine system updates, package installations and Python upgrades into a single RUN command to reduce layers
 # Also, clean up the apt cache to reduce image size
 RUN sudo apt-get update && sudo apt-get install -y \
